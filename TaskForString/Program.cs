@@ -35,6 +35,15 @@
             string? input = Console.ReadLine();
             return new Sentence { Text = input };
         }
+        public static void PrintResult(double percent, Dictionary<string, int> letterPercents)
+        {
+            Console.WriteLine($"Процент букв в предложении: {percent:F2}%");
+            Console.WriteLine("Процент каждой буквы:");
+            foreach (var kvp in letterPercents)
+            {
+                Console.WriteLine($"{kvp.Key}: {kvp.Value}%");
+            }
+        }
     }
 
     public class Logic
@@ -76,7 +85,10 @@
     {
         static void Main(string[] args)
         {
-            
+            var sentence = ConsoleUI.ReadSentace();
+            var letterPercent = Logic.CalculateLetterPercent(sentence);
+            var eachLetterPercent = Logic.CalculateEachLetterPercent(sentence);
+            ConsoleUI.PrintResult(letterPercent, eachLetterPercent);
         }
     }
 }
