@@ -1,6 +1,6 @@
 ﻿namespace TaskForString
 {
-    class Sentence
+    public class Sentence
     {
         public string Text { get; set; }
         
@@ -26,6 +26,17 @@
             return Text?.ToLower()??string.Empty;
         }
     }
+    
+    public static class ConsoleUI
+    {
+        public static Sentence ReadSentace()
+        {
+            Console.WriteLine("Введите предложение");
+            string? input = Console.ReadLine();
+            return new Sentence { Text = input };
+        }
+    }
+
     internal class Program
     {
         static void Main(string[] args)
