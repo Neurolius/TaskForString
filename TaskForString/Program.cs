@@ -62,7 +62,10 @@
             var result = new Dictionary<string, int>();
             string lowerText = sentence.GetLowerText();
             int totalLength = sentence.GetLength();
-            if (totalLength == 0) return result;
+
+            if (totalLength == 0) 
+                return result;
+
             foreach (char c in lowerText)
             {
                 if (char.IsLetter(c))
@@ -75,10 +78,12 @@
                     result[letter]++;
                 }
             }
+
             foreach (var key in result.Keys.ToList())
             {
                 result[key] = (int)((double)result[key] / totalLength * 100);
             }
+
             return result;
         }
     }
